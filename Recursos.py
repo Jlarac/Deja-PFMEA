@@ -8,14 +8,18 @@ class datos(object):
 		parser.read('config.cfg')
 		self.nombre_empresa=parser.get('general','nombre')
 
+		#print(parser.sections())
 		for numero,planta in parser.items('Plantas'):
-			#self.plantas.append(planta)
-			#self.lineas_por_planta[planta],
-			self.menu_lineas_por_plantas[planta]={}
+			parser = ConfigParser()
+			parser.read('config.cfg')
 
+			#print(parser.sections())
+			self.menu_lineas_por_plantas[planta]={}
+			#print(planta)
+			#print(self.menu_lineas_por_plantas)
 			for numero,linea in parser.items(planta):
 				self.menu_lineas_por_plantas[planta][linea]={}
-
+				#print(self.menu_lineas_por_plantas)
 				parser = ConfigParser()
 				parser.read(linea+'.cfg')
 				try: 
@@ -54,7 +58,7 @@ class datos(object):
 
 		#print(plantas)
 		#print(lineas_por_planta)
-		print(self.menu_lineas_por_plantas)
+		#print(self.menu_lineas_por_plantas)
 
 
 	def guardar_configuraciones(self):
